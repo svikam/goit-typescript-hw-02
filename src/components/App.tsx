@@ -1,22 +1,22 @@
 import { useState } from 'react';
 import SearchBar from './SearchBar/SearchBar';
 import ImageGallery from './ImageGallery/ImageGallery';
-import { fetchImages } from '../api';
+import { fetchImages, Image } from '../api';
 import Loader from './Loader/Loader';
 import ErrorMessage from './ErrorMessage/ErrorMessage';
 import LoadMoreBtn from './LoadMoreBtn/LoadMoreBtn';
 import ImageModal from './ImageModal/ImageModal';
 
-const App = () => {
-    const [images, setImages] = useState([]);
-    const [query, setQuery] = useState('');
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(false);
-    const [page, setPage] = useState(0);
-    const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [selectedImage, setSelectedImage] = useState(null);
+const App: React.FC = () => {
+    const [images, setImages] = useState<Image[]>([]);
+    const [query, setQuery] = useState<string>('');
+    const [loading, setLoading] = useState<boolean>(false);
+    const [error, setError] = useState<boolean>(false);
+    const [page, setPage] = useState<number>(0);
+    const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
+    const [selectedImage, setSelectedImage] = useState<Image | null>(null);
 
-    const handleSearch = async (query) => {
+    const handleSearch = async(query: string) => {
         setPage(1);
         setQuery(query);
         try {
@@ -46,7 +46,7 @@ const App = () => {
         }
     };
     
-    const openModal = (image) => {
+    const openModal = (image: Image) => {
         setModalIsOpen(true);
         setSelectedImage(image);        
     };

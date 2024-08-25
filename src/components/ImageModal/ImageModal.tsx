@@ -1,5 +1,6 @@
 import Modal from "react-modal";
 import s from './ImageModal.module.css';
+import { Image } from '../../api';
 Modal.setAppElement("#root");
 
 const customStyles = {
@@ -16,7 +17,12 @@ const customStyles = {
         transform: "translate(-50%, -50%)",
     },
 };
-const ImageModal = ({ image, isOpen, onRequestClose }) => {
+interface ImageModalProps {
+    image: Image | null;
+    isOpen: boolean;
+    onRequestClose: () => void;
+}
+const ImageModal: React.FC<ImageModalProps> = ({ image, isOpen, onRequestClose }) => {
     if (!image) {
         return null;
     }
