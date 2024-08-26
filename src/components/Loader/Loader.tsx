@@ -1,19 +1,17 @@
-import { RotatingLines } from 'react-loader-spinner';
+import { ThreeCircles } from 'react-loader-spinner';
 import s from './Loader.module.css';
 
-const Loader = () => {
+const Loader: React.FC = () => {
     return (
         <div className={s.loader}>
-            <RotatingLines
-                visible={true}
-                height="96"
-                width="96"
+            <ThreeCircles
+                height="100"
+                width="100"
                 color="grey"
-                strokeWidth="5"
-                animationDuration="0.75"
-                ariaLabel="rotating-lines-loading"
+                ariaLabel="three-circles-loading"
                 wrapperStyle={{}}
                 wrapperClass=""
+                visible={true}
             />
         </div>
     );
